@@ -52,21 +52,22 @@ WARNING!!! WARNING!!!
 // name in the loop.
 /* fill in condition here */
 
-var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+(function () {
+  var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+  const GOODBYE_CHAR = "j";
+  const START = 0;
+  
+  for (let i in names) {
 
-const GOODBYE_CHAR = "j";
-const START = 0;
+    var personName = names[i]
+    var firstLetter = personName.charAt(START).toLowerCase();
+    var isSayGoodbye = firstLetter.startsWith(GOODBYE_CHAR)
 
-for (let i in names) {
+    if (isSayGoodbye) {
+      byeSpeaker.speak(personName);
+    } else {
+      helloSpeaker.speak(personName);
+    }
 
-  var personName = names[i]
-  var firstLetter = personName.charAt(START).toLowerCase();
-  var isSayGoodbye = firstLetter.startsWith(GOODBYE_CHAR)
-
-  if (isSayGoodbye) {
-    byeSpeaker.speak(personName);
-  } else {
-    helloSpeaker.speak(personName);
   }
-
-}
+}());
